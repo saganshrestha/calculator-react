@@ -2,6 +2,7 @@ import React from "react";
 import Screen from "./Components/Screen";
 import ButtonBox from "./Components/ButtonBox";
 import Button from "./Components/Button";
+import CalcProvider from "./context/CalcContext";
 
 const buttonValues = [
   ["AC", "CE", "%", "/"],
@@ -13,14 +14,16 @@ const buttonValues = [
 
 const App = () => {
   return (
-    <div className="bg-purple-600 p-4 rounded-lg">
-      <Screen />
-      <ButtonBox>
-        {buttonValues.flat().map((button, index) => (
-          <Button value={button} key={index} />
-        ))}
-      </ButtonBox>
-    </div>
+    <CalcProvider>
+      <div className="p-4 bg-purple-600 rounded-lg">
+        <Screen />
+        <ButtonBox>
+          {buttonValues.flat().map((button, index) => (
+            <Button value={button} key={index} />
+          ))}
+        </ButtonBox>
+      </div>
+    </CalcProvider>
   );
 };
 

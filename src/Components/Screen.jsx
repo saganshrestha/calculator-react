@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { CalcContext } from "../context/CalcContext";
 
 const Screen = () => {
-  return (
-    <div className='mb-4 bg-white h-14 flex items-center justify-end text-lg px-4 rounded-md'>0123456789</div>
-  )
-}
+  const { calc } = useContext(CalcContext);
 
-export default Screen
+  return (
+    <div className="flex items-center justify-end px-4 mb-4 text-lg bg-white rounded-md h-14">
+      {calc.num ? calc.num : calc.res}
+    </div>
+  );
+};
+
+export default Screen;
